@@ -1,0 +1,6 @@
+% kubectl, kubunetes command line tool
+
+# Switch to a different context
+kubectl config use-context <context>
+
+$ context: kubectl config get-contexts -o name

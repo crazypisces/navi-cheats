@@ -1,0 +1,4 @@
+% navi, command line cheat
+
+# Update cheats
+zsh -c 'cd "$(navi info cheats-path)/crazypisces__navi-cheats" && git pull -q origin main'

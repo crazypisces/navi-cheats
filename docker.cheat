@@ -1,0 +1,14 @@
+% Docker, docker commands
+
+# Open a shell in a running container
+docker exec -it <container> /bin/bash
+# Show logs of a container
+docker logs -f <container>
+# Inspect a container
+docker inspect <container>
+# Copy files from a container
+docker cp <container>:<path> <host_path>
+# Copy files to a container
+docker cp <host_path> <container>:<path>
+
+$ container: docker ps -q

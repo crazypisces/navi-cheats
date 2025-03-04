@@ -1,6 +1,67 @@
-% kubectl, kubunetes command line tool
+% kubectl, k8s
 
-# Switch to a different context
+# Use context
 kubectl config use-context <context>
+# Get contexts
+kubectl config get-contexts
+# Set default namespace
+kubectl config set-context --current --namespace=<namespace>
+
+# Get pods
+kubectl get pods -n <namespace>
+# Get nodes
+kubectl get nodes
+# Get deployments
+kubectl get deployments -n <namespace>
+# Get services
+kubectl get services -n <namespace>
+# Get configmaps
+kubectl get configmap -n <namespace>
+# Get secrets
+kubectl get secrets -n <namespace>
+# Get ingress
+kubectl get ingress -n <namespace>
+
+# Describe a specific pod
+kubectl describe pod <pod-name> -n <namespace>
+# Describe a specific node
+kubectl describe node <node-name>
+# Describe a specific service
+kubectl describe svc <service-name> -n <namespace>
+# Show documentation for pod spec fields
+kubectl explain pod.spec
+
+# View logs of a pod
+kubectl logs <pod-name> -n <namespace>
+# View logs of a pod in real-time
+kubectl logs -f <pod-name> -n <namespace>
+
+# Open a shell inside a pod
+kubectl exec -it <pod-name> -n <namespace> -- /bin/sh
+# Copy files to a pod
+kubectl cp <local-file> <pod-name>:<container-path> -n <namespace>
+# Copy files from a pod
+kubectl cp <pod-name>:<container-path> <local-file> -n <namespace>
+
+# Scale a deployment
+kubectl scale deployment <deployment-name> --replicas=<num> -n <namespace>
+# Restart a deployment
+kubectl rollout restart deployment <deployment-name> -n <namespace>
+# View deployment rollout history
+kubectl rollout history deployment <deployment-name> -n <namespace>
+# Rollback a deployment
+kubectl rollout undo deployment <deployment-name> -n <namespace>
+
+# Forward a service port
+kubectl port-forward svc/<service-name> <local-port>:<remote-port> -n <namespace>
+# Forward a pod port
+kubectl port-forward pod/<pod-name> <local-port>:<remote-port> -n <namespace>
+# Expose a deployment as a service
+kubectl expose deployment <deployment-name> --type=LoadBalancer --port=<port> -n <namespace>
 
 $ context: kubectl config get-contexts -o name
+$ namespace: kubectl get namespaces -o custom-columns=":metadata.name"
+$ pod-name: kubectl get pods -n <namespace> -o custom-columns=":metadata.name"
+$ deployment-name: kubectl get deployments -n <namespace> -o custom-columns=":metadata.name"
+$ service-name: kubectl get services -n <namespace> -o custom-columns=":metadata.name"
+$ node-name: kubectl get nodes -o custom-columns=":metadata.name"

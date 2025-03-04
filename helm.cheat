@@ -1,0 +1,19 @@
+% helm
+
+# List helm releases
+helm list -n <namespace>
+
+# Show release status
+helm status <release-name> -n <namespace>
+# Get all details of a release
+helm get all <release-name> -n <namespace>
+# Get release values
+helm get values <release-name> -n <namespace>
+# Get the manifest of a release
+helm get manifest <release-name> -n <namespace>
+
+# Upgrade a release
+helm upgrade <release-name> <chart-name> -n <namespace> --values <values-file>
+
+$ release-name: helm list -q -n <namespace>
+@ kubectl, k8s

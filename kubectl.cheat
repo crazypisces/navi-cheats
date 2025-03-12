@@ -59,9 +59,14 @@ kubectl port-forward pod/<pod-name> <local-port>:<remote-port> -n <namespace>
 # Expose a deployment as a service
 kubectl expose deployment <deployment-name> --type=LoadBalancer --port=<port> -n <namespace>
 
+# Update image of a deployment
+kubectl set image deployment/<deployment-name> <container-name>=<new-image> -n <namespace>
+
 $ context: kubectl config get-contexts -o name
 $ namespace: kubectl get namespaces -o custom-columns=":metadata.name"
 $ pod-name: kubectl get pods -n <namespace> -o custom-columns=":metadata.name"
 $ deployment-name: kubectl get deployments -n <namespace> -o custom-columns=":metadata.name"
 $ service-name: kubectl get services -n <namespace> -o custom-columns=":metadata.name"
 $ node-name: kubectl get nodes -o custom-columns=":metadata.name"
+$ deployment-name: kubectl get deployments -n <namespace> -o custom-columns=":metadata.name"
+$ container-name: kubectl get pods -n <namespace> <pod-name> -o jsonpath="{.spec.containers[0].name}"

@@ -1,0 +1,10 @@
+% gcloud
+
+# list configurations
+gcloud config configurations list
+# create configuration
+gcloud config configurations create <name>
+# activate configuration
+gcloud config configurations activate <config_name>
+
+$ config_name: gcloud config configurations list --format="value(name)"
